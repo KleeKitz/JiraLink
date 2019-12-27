@@ -9,24 +9,23 @@ browser.contextMenus.create({
 });
 
 browser.contextMenus.onClicked.addListener((info, tab) => {
-  console.log("Item " + info.menuItemId + " clicked " +
-              "in tab " + tab.id);
-  console.log(info.selectionText);
-  
+
   const selText = info.selectionText;
+  console.log("Item " + info.menuItemId + " clicked " +
+              "in tab " + tab.id + " containing text: " + selText);
 
   if ( regex.test(selText) ) {
   	fullurl = preurl + selText;
   } else {
-  	browser.contextMenus.remove(info.menuItemId);
-  	throw new Error("Error! \"" + selText + "\" is not a valid Jira issue type!");
+	onError();
   }
-
-
-  
 
   browser.tabs.create({
   	url:fullurl
   });
   console.log(fullurl);
 });
+
+function onError() {
+	throw new Error("Not creating new tab as it was not a valid Jira Type.")
+};
