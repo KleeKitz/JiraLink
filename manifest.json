@@ -11,7 +11,10 @@
     "256": "icons/jira.png"
   },
 
-  "permissions": ["contextMenus"],
+  "permissions": [
+    "contextMenus",
+    "activeTab"
+  ],
 
   "background": {
     "scripts": [
