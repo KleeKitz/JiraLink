@@ -3,18 +3,22 @@
   "manifest_version": 2,
   "name": "JiraLink",
   "version": "1.0",
+  "homepage_url": "https://github.com/KleeKitz/JiraLink",
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Adds a context menu option to navigate to a JIRA-style case.",
 
   "icons": {
     "256": "icons/jira.png"
   },
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["JiraLink.js"]
-    }
-  ]
+  "permissions": ["contextMenus"],
+
+  "background": {
+    "scripts": [
+      "Jiralink.js"
+    ]
+  }
+
+
 
 }
